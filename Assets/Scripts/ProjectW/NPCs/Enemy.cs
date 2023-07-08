@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Health))]
@@ -45,9 +46,11 @@ public class Enemy : MonoBehaviour
     
     #endregion
 
+    public float AttackRange = 2f;
+    
     #region Animation
 
-    protected Animator _animator;
+    public Animator AAnimator;
 
     #endregion
     
@@ -56,15 +59,13 @@ public class Enemy : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = MoveSpeed;
         _navMeshPath = new NavMeshPath();
-        _animator = GetComponent<Animator>();
         Health = GetComponent<Health>();
         Health.OnDeath += Die;
-        // _attack.EAnimator = _animator;
     }
     
     private void Start()
     {
-        _target = GameManager.Instance.ABaker.transform;
+        _target = PlayerManager.Instance.ABaker.transform;
     }
 
     private void OnEnable()
@@ -79,42 +80,34 @@ public class Enemy : MonoBehaviour
     
     private void Update()
     {
-        // PlayerInAttackRange = _attack.CheckTargetInAttackRange();
-        //
-        // if (UseAggroRange)
-        // {
-        //     PlayerInSight = !_attack.CheckTargetIsOccluded(IgnoreSightCheck);
-        //     if (UsePatroling && !PlayerInAttackRange) Patrole();
-        //     float _distanceToPlayer = _attack.DistanceToTarget();
-        //     if (_distanceToPlayer <= AggroRange)
-        //     {
-        //         if (((PlayerInSight && !PlayerInAttackRange) || (!PlayerInSight)) && !_attack.OnCooldown) ChasePlayer();
-        //         if (PlayerInSight && PlayerInAttackRange) Attack();
-        //     }
-        // }
-        // else
-        // {
-        //     FaceTarget();
-        //
-        //     _searchCooldown += Time.deltaTime;
-        //     if (_searchCooldown >= SearchCooldown)
-        //     {
-        //         if (!_attack.OnCooldown) ChasePlayer();
-        //         _searchCooldown -= SearchCooldown;
-        //     }
-        //
-        //     if (PlayerInAttackRange)
-        //     {
-        //         PlayerInSight = !_attack.CheckTargetIsOccluded(IgnoreSightCheck);
-        //     }
-        //     if (PlayerInSight && PlayerInAttackRange) Attack();
-        // }
+        FaceTarget();
+
+        _searchCooldown += Time.deltaTime;
+        if (_searchCooldown >= SearchCooldown)
+        {
+            if (true)//!_attack.OnCooldown) 
+                ChasePlayer();
+            _searchCooldown -= SearchCooldown;
+        }
+
+        PlayerInAttackRange = CheckTargetInAttackRange();
+        if (PlayerInAttackRange) Attack();
     }
 
+    public float DistanceToTarget()
+    {
+        return Vector3.Distance(_target.position, transform.position);
+    }
+
+    public bool CheckTargetInAttackRange()
+    {
+        return DistanceToTarget() <= AttackRange;
+    }
+    
     private void Attack()
     {
         _agent.SetDestination(transform.position);
-        _animator.SetFloat("MovSpeed", 0f);
+        AAnimator.SetFloat("MovSpeed", 0f);
         FaceTarget();
         
         // _attack.DoStartAttack();
@@ -125,12 +118,12 @@ public class Enemy : MonoBehaviour
         if (_agent.CalculatePath(_target.position, _navMeshPath))
         {
             _agent.SetDestination(_target.position);
-            _animator.SetFloat("MovSpeed", 1f);
+            AAnimator.SetFloat("MovSpeed", 1f);
         }
         else
         {
             _agent.SetDestination(transform.position);
-            _animator.SetFloat("MovSpeed", 0f);
+            AAnimator.SetFloat("MovSpeed", 0f);
         }
     }
 
@@ -171,9 +164,17 @@ public class Enemy : MonoBehaviour
     
     void Die()
     {
+        AAnimator.SetFloat("MovementSpeed",0);
+        AAnimator.SetTrigger("Death");
+        StartCoroutine(KillAfterSeconds(2));
+    }
+
+    private IEnumerator KillAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
         Destroy(this.gameObject);
     }
-    
+
     private void OnDrawGizmosSelected()
     {
         if (UseAggroRange)
