@@ -10,8 +10,6 @@ using Random = UnityEngine.Random;
 public class Enemy : MonoBehaviour
 {
 
-    public LayerMask IgnoreSightCheck;
-
     #region Patroling
 
     public bool UsePatroling = false;
@@ -46,7 +44,8 @@ public class Enemy : MonoBehaviour
     
     #endregion
 
-    public float AttackRange = 2f;
+    public float AttackRange = 1f;
+    private bool _attackOnCooldown;
     
     #region Animation
 
@@ -80,18 +79,18 @@ public class Enemy : MonoBehaviour
     
     private void Update()
     {
-        FaceTarget();
+        // FaceTarget();
 
         _searchCooldown += Time.deltaTime;
         if (_searchCooldown >= SearchCooldown)
         {
-            if (true)//!_attack.OnCooldown) 
+            if (!_attackOnCooldown) 
                 ChasePlayer();
             _searchCooldown -= SearchCooldown;
         }
 
         PlayerInAttackRange = CheckTargetInAttackRange();
-        if (PlayerInAttackRange) Attack();
+        if (PlayerInAttackRange && !_attackOnCooldown) Attack();
     }
 
     public float DistanceToTarget()
@@ -106,24 +105,37 @@ public class Enemy : MonoBehaviour
     
     private void Attack()
     {
-        _agent.SetDestination(transform.position);
-        AAnimator.SetFloat("MovSpeed", 0f);
-        FaceTarget();
+        AAnimator.SetFloat("MovementSpeed", 0f);
+        AAnimator.SetBool("IsPunching",true);
+        _attackOnCooldown = true;
+        _agent.updateRotation = false;
+        StartCoroutine(StopAttackingAfterSeconds(0.6f));
+        
+        // FaceTarget();
         
         // _attack.DoStartAttack();
+    }
+    
+    private IEnumerator StopAttackingAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        AAnimator.SetBool("IsPunching",false);
+        _attackOnCooldown = false;
+        _agent.updateRotation = true;
     }
 
     private void ChasePlayer()
     {
         if (_agent.CalculatePath(_target.position, _navMeshPath))
         {
+            _agent.isStopped = false;
             _agent.SetDestination(_target.position);
-            AAnimator.SetFloat("MovSpeed", 1f);
+            AAnimator.SetFloat("MovementSpeed", 1f);
         }
         else
         {
-            _agent.SetDestination(transform.position);
-            AAnimator.SetFloat("MovSpeed", 0f);
+            _agent.isStopped = true;
+            AAnimator.SetFloat("MovementSpeed", 0f);
         }
     }
 
