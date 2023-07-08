@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using OPlan.Tools;
 using UnityEngine;
 
-public class WorldGeneration : MonoBehaviour
+public class WorldGeneration : UnitySingleton<WorldGeneration>
 {
     // Start is called before the first frame update
     void Start()
@@ -12,6 +13,11 @@ public class WorldGeneration : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+
+    public void BuildWorld()
     {
         
     }
