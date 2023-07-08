@@ -96,13 +96,15 @@ public class GameManager : UnitySingleton<GameManager>
     }
     public void initilizeMetaLevels(){
         //set all metalevels to zero
-        PlayerPrefs.SetInt("MetaHPLevel", 0);
-        PlayerPrefs.SetInt("MetaDMGLevel", 0);
-        PlayerPrefs.SetInt("MetaSuckerRadiusLevel", 0);
-        PlayerPrefs.SetInt("MetaSuckerConeLevel", 0);
-        PlayerPrefs.SetInt("MetaATKSpeedLevel", 0);
-        PlayerPrefs.SetInt("MetaKnockBackLevel", 0);
 
+        PlayerPrefs.SetInt("DMG", 0);
+        PlayerPrefs.SetInt("ATKSpeed", 0);
+        PlayerPrefs.SetInt("KnockBack", 0);
+
+        PlayerPrefs.SetInt("HP", 0);
+        PlayerPrefs.SetInt("XPGainSpeed", 0);
+        PlayerPrefs.SetInt("SuckerRadius", 0);
+ 
 
         // Starting Powder:
         PlayerPrefs.SetInt("BakedBread",0);
