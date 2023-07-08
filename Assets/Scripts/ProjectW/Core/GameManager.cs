@@ -9,7 +9,6 @@ public class GameManager : UnitySingleton<GameManager>
     // public PauseMenu PauseMenu;
     private bool _gamePaused;
     private int _activeScene = 0;
-    public Baker ABaker;
 
     public Action ResetPause;
 
@@ -33,7 +32,6 @@ public class GameManager : UnitySingleton<GameManager>
     {
         if (_activeScene == 1)
         {
-            ABaker = FindObjectOfType<Baker>();
             WorldGeneration.Instance.BuildWorld();
             //Player.spawn
             //enemyspawner.start
