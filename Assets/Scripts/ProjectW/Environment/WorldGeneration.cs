@@ -1,24 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
-using OPlan.Tools;
+using ProjectW.Utility;
 using UnityEngine;
 
 public class WorldGeneration : UnitySingleton<WorldGeneration>
 {
-    // Start is called before the first frame update
-    void Start()
+    public int WorldSizeX, WorldSizeY;
+    public int Mountains;
+    public int Trees;
+    
+    
+    private void Start()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void BuildWorld()
     {
-        
+        //On random places spawn the prefab obstacles
+        //watch for size
+        //cast a ray
+        //check for layer and hit
     }
 }

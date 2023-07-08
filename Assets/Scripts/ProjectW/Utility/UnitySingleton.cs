@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OPlan.Tools
+namespace ProjectW.Utility
 {
     public class UnitySingleton<T> : MonoBehaviour
         where T : Component

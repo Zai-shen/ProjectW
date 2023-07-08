@@ -1,5 +1,5 @@
 ﻿using System;
-using OPlan.Tools;
+using ProjectW.Utility;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,31 +11,6 @@ public class GameManager : UnitySingleton<GameManager>
 
     public Action ResetPause;
 
-    #region Singleton
-    
-    private static GameManager _gameManager;
-    public static GameManager Instance
-    {
-        get
-        {
-            if (!_gameManager)
-            {
-                _gameManager = FindObjectOfType(typeof(GameManager)) as GameManager;
-
-                if (!_gameManager)
-                    Debug.LogError("There needs to be one active GameManager script on a GameObject in your scene.");
-            }
-
-            return _gameManager;
-        }
-        private set
-        {
-            
-        }
-    }
-
-    #endregion
-    
     private void OnEnable()
     {
         ResetPause += ResetPauseState;
