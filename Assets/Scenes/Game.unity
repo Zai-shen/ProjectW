@@ -304,7 +304,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.47625908, y: -0.32791772, z: 0.197273, w: 0.7916632}
+  m_LocalRotation: {x: 0.4762591, y: -0.32791767, z: 0.19727302, w: 0.7916632}
   m_LocalPosition: {x: 6, y: 16, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -620,7 +620,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376238940}
-  m_LocalRotation: {x: 0.47625908, y: -0.32791772, z: 0.197273, w: 0.7916632}
+  m_LocalRotation: {x: 0.4762591, y: -0.32791767, z: 0.19727302, w: 0.7916632}
   m_LocalPosition: {x: 6, y: 16, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -986,7 +986,7 @@ PrefabInstance:
       addedObject: {fileID: 6897523256094342465}
     - targetCorrespondingSourceObject: {fileID: 6800728798950430102, guid: f3759a23fd518f44ab372ec32f7dd90b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6897523256094342466}
+      addedObject: {fileID: 6897523256094342468}
   m_SourcePrefab: {fileID: 100100000, guid: f3759a23fd518f44ab372ec32f7dd90b, type: 3}
 --- !u!1 &6897523256094342464 stripped
 GameObject:
@@ -1003,11 +1003,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 4
+  m_Acceleration: 20
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_AngularSpeed: 90
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1015,7 +1015,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6897523256094342466
+--- !u!114 &6897523256094342468
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
