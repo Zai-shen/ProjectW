@@ -30,7 +30,7 @@ public class LevelManagment : MonoBehaviour
     public Text PowerTitle;
     public Text CostNLevel; 
     public Text BonusAmount; 
-    
+
     public string LevelText = "LVL";
     public string MaxedLeveled = "Maxed Out";
     private int tmpint;
@@ -67,11 +67,9 @@ public class LevelManagment : MonoBehaviour
 
         updateThisButton();
         checkAffordable();
-
         Button thisButton = GetComponent<Button>();
         thisButton.onClick.AddListener(metaLevelUp);
         updateThisButton();
-
     }    
 
     void updateThisButton(){
