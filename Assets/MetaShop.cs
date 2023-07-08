@@ -19,6 +19,7 @@ public class MetaShop : MonoBehaviour
 
     void Awake()
     {
+        // add all buttons on this page
         ButtonList.Add(ButtonMetaDMGLevel);
 
         MetaShop ms = GetComponent<MetaShop>();
@@ -28,7 +29,7 @@ public class MetaShop : MonoBehaviour
             lvMg.registerPanel(ms);
         }
         _currentBread = PlayerPrefs.GetInt("BakedBread");
-        BreadScoreText.text = "You Got " + _currentBread.ToString() + " Pieces of Bread";
+        BreadScoreText.text = "You Got \n" + _currentBread.ToString() + "\n Pieces of Bread";
     }    
 
 
