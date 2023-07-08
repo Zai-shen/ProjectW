@@ -1,43 +1,39 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ProjectW.NPCs.Baker;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class BakerMovement : MonoBehaviour
 {
-    private Camera _mainCam;
+    [FormerlySerializedAs("StartMoving")] public bool Moving = false;
+    
+    public BakerAnimator ABakerAnimator;
     private NavMeshAgent _agent;
     
     float maxAngle = 50f;
     float maxAngleIncrease = 5f;
     float maxDistance = 10f;
     float minDistance = 6f;
-    
-    void Start()
+
+    private void Start()
     {
-        _mainCam = Camera.main;
         _agent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    private void Update()
     {
+        if (!Moving)
+            return;
+        
+        ABakerAnimator.Speed = _agent.speed;
         if (DestinationReached())
         {
             StartNewMovement();
         }
-        
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     // Ray ray = _mainCam.ScreenPointToRay(Input.mousePosition);
-            // RaycastHit hit;
-            //
-            // if (Physics.Raycast(ray, out hit))
-            // {
-            //     _agent.SetDestination(hit.point);
-            // }
-        // }
     }
 
     private bool RandomTrueFalse()
