@@ -13,6 +13,12 @@ public class LevelManagment : MonoBehaviour
     private int _level2Price= 150;
     private int _level3Price= 200;
 
+    private int _level1Bonus= 15;
+    private int _level2Bonus= 10;
+    private int _level3Bonus= 5;
+
+
+
     private int _currentPrice= 100;
 
     private int _maxLevel = 3;
@@ -24,23 +30,51 @@ public class LevelManagment : MonoBehaviour
     public Text PowerTitle;
     public Text CostNLevel; 
     public Text BonusAmount; 
-
-
-
-    public Button ButtonMetaDMGLevel;    
-
+    
     public string LevelText = "LVL";
     public string MaxedLeveled = "Maxed Out";
     private int tmpint;
+    private string tmpstring;
+    private string lvlBonusString ="_Level";
+    private string lvlCostString = "_cost_Level";
     private MetaShop _ms;
 
 
     void Awake()
     {
         _currentBread = PlayerPrefs.GetInt("BakedBread");
-
         _currentMetaLevel=PlayerPrefs.GetInt(_buttonName);
 
+        tmpstring = _buttonName+ lvlCostString+ 1.ToString();
+        _level1Price= PlayerPrefs.GetInt(tmpstring);
+
+        tmpstring = _buttonName+ lvlBonusString+ 1.ToString();
+        _level1Bonus = PlayerPrefs.GetInt(tmpstring);
+
+        tmpstring = _buttonName+ lvlCostString+ 2.ToString();
+        _level2Price= PlayerPrefs.GetInt(tmpstring);
+        tmpstring = _buttonName+ lvlBonusString+ 2.ToString();
+        _level2Bonus = PlayerPrefs.GetInt(tmpstring);
+
+        tmpstring = _buttonName+ lvlCostString+ 3.ToString();
+        _level3Price= PlayerPrefs.GetInt(tmpstring);
+        tmpstring = _buttonName+ lvlBonusString+ 3.ToString();
+        _level3Bonus = PlayerPrefs.GetInt(tmpstring);
+
+        Debug.Log(_currentMetaLevel);
+
+
+
+        updateThisButton();
+        checkAffordable();
+
+        Button thisButton = GetComponent<Button>();
+        thisButton.onClick.AddListener(metaLevelUp);
+        updateThisButton();
+
+    }    
+
+    void updateThisButton(){
 
         Button thisButton = GetComponent<Button>();
 
@@ -48,15 +82,19 @@ public class LevelManagment : MonoBehaviour
         {
             case 0:
                 _currentPrice = _level1Price;
+                _nextBonus = _level1Bonus;
                 break;
             case 1:
                 _currentPrice = _level2Price;
+                _nextBonus = _level2Bonus;
                 break;
             case 2:
                 _currentPrice = _level3Price;
+                _nextBonus = _level3Bonus;
                 break;
             case 3:
                 _currentPrice = 1000000;
+                _nextBonus= 0;
                 break;
             default:
                 // code block
@@ -68,7 +106,7 @@ public class LevelManagment : MonoBehaviour
 
         if (_currentMetaLevel>= _maxLevel){
             CostNLevel.text = MaxedLeveled;
-            BonusAmount.text = "None";
+            BonusAmount.text = "No more Bonus";
 
         } else {
 
@@ -76,21 +114,12 @@ public class LevelManagment : MonoBehaviour
             BonusAmount.text = _nextBonus.ToString() + " % Bonus";
         }
 
-
-        
-
-
-
         if ((_currentBread < _currentPrice) |( _currentMetaLevel>= _maxLevel)){
             thisButton.enabled = false;
         } else {
             thisButton.enabled = true;
         }
-
-
-        
-
-    }    
+    }
 
     void metaLevelUp () {
         // reduce breadcount and save to player pref
@@ -102,44 +131,41 @@ public class LevelManagment : MonoBehaviour
         PlayerPrefs.SetInt(_buttonName,_currentMetaLevel);
 
         // increase current price to next level
-                switch(_currentMetaLevel) 
+        switch(_currentMetaLevel) 
         {
             case 0:
                 _currentPrice = _level1Price;
+                _nextBonus = _level1Bonus;
                 break;
             case 1:
                 _currentPrice = _level2Price;
+                _nextBonus = _level2Bonus;
                 break;
             case 2:
                 _currentPrice = _level3Price;
+                _nextBonus = _level3Bonus;
                 break;
             case 3:
                 _currentPrice = 1000000;
+                _nextBonus= 0;
                 break;
             default:
                 // code block
                 break;
         }
+
         PlayerPrefs.Save();
+        updateThisButton();
 
         checkAffordable();
-
-
-
-
-
-
+        _ms.updateButtons();
 
         // for all buttons check if price is still high enough
 
     }
 
 
-    public void CheckCash(){
-        Button thisButton = GetComponent<Button>();
-        thisButton.onClick.AddListener(metaLevelUp);
 
-    }
 
     public void checkAffordable(){
         Button thisButton = GetComponent<Button>();
@@ -153,6 +179,7 @@ public class LevelManagment : MonoBehaviour
 
     public void registerPanel(MetaShop ms){
         _ms= ms;
+        Debug.Log("in button registerPanel");
     }
 
 
