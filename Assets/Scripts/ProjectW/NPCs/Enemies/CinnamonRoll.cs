@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Health))]
-public class Enemy : MonoBehaviour
+public class CinnamonRoll : MonoBehaviour
 {
 
     #region Patroling
@@ -46,13 +46,7 @@ public class Enemy : MonoBehaviour
 
     public float AttackRange = 1f;
     private bool _attackOnCooldown;
-    
-    #region Animation
 
-    public Animator AAnimator;
-
-    #endregion
-    
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -105,23 +99,7 @@ public class Enemy : MonoBehaviour
     
     private void Attack()
     {
-        AAnimator.SetFloat("MovementSpeed", 0f);
-        AAnimator.SetBool("IsPunching",true);
-        _attackOnCooldown = true;
-        _agent.updateRotation = false;
-        StartCoroutine(StopAttackingAfterSeconds(0.6f));
-        
-        // FaceTarget();
-        
-        // _attack.DoStartAttack();
-    }
-    
-    private IEnumerator StopAttackingAfterSeconds(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        AAnimator.SetBool("IsPunching",false);
-        _attackOnCooldown = false;
-        _agent.updateRotation = true;
+        Die();
     }
 
     private void ChasePlayer()
@@ -130,12 +108,10 @@ public class Enemy : MonoBehaviour
         {
             _agent.isStopped = false;
             _agent.SetDestination(_target.position);
-            AAnimator.SetFloat("MovementSpeed", 1f);
         }
         else
         {
             _agent.isStopped = true;
-            AAnimator.SetFloat("MovementSpeed", 0f);
         }
     }
 
@@ -176,8 +152,7 @@ public class Enemy : MonoBehaviour
     
     void Die()
     {
-        AAnimator.SetFloat("MovementSpeed",0);
-        AAnimator.SetTrigger("Death");
+        //Explode 
         StartCoroutine(KillAfterSeconds(2));
     }
 
