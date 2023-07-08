@@ -25,6 +25,10 @@ public class GameManager : UnitySingleton<GameManager>
     {
         base.Awake();
         _activeScene = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    private void Start()
+    {
         if (_activeScene == 1)
         {
             WorldGeneration.Instance.BuildWorld();
