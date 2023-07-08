@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ea8f1aed6d8732b73a2bcbdc25fbf2ce
+guid: e9d61c2372bcb04c98325fb06626d0a0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,18 +33,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: tpose
+      name: Drunk Idle Variation
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 119
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -106,12 +106,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - e9d61c2372bcb04c98325fb06626d0a0
-  - 1fe4a9d3c546f1d56bcee1578281a54e
-  - 49f285b072793cda5b7a83f22a1679b1
-  - bc9c971dc6602b06084095a88def36a2
-  - ecd5b453d6cba35ce8bd307888063a2b
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -533,11 +528,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: ea8f1aed6d8732b73a2bcbdc25fbf2ce, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
