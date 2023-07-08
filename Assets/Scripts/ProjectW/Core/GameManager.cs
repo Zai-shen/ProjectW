@@ -82,8 +82,46 @@ public class GameManager : UnitySingleton<GameManager>
         LoadScene(1);
     }
 
+
     public void LoadMainMenu()
     {
         LoadScene(0);
+
+        // test if it is first time user starts game
+        if (PlayerPrefs.HasKey("PlayedBefore")){
+            Debug.Log("Not First Time Playing");
+        } else {
+            initilizeMetaLevels();
+        }
+    }
+    public void initilizeMetaLevels(){
+        //set all metalevels to zero
+        PlayerPrefs.SetInt("MetaHPLevel", 0);
+        PlayerPrefs.SetInt("MetaDMGLevel", 0);
+        PlayerPrefs.SetInt("MetaSuckerRadiusLevel", 0);
+        PlayerPrefs.SetInt("MetaSuckerConeLevel", 0);
+        PlayerPrefs.SetInt("MetaATKSpeedLevel", 0);
+        PlayerPrefs.SetInt("MetaKnockBackLevel", 0);
+
+
+        // Starting Powder:
+        PlayerPrefs.SetInt("BakedBread",0);
+
+
+        // Highscore to 0
+        PlayerPrefs.SetInt("HighScore", 0);
+
+        PlayerPrefs.Save();
+    }
+
+    public int scoreDivider = 100;
+    public void OnDeath(int Score){
+        if (Score > PlayerPrefs.GetInt("HighScore")){
+            PlayerPrefs.SetInt("HighScore",Score);
+        }
+        PlayerPrefs.SetInt("BakedBread",PlayerPrefs.GetInt("BakedBread")+Score/scoreDivider);
+        Debug.Log(PlayerPrefs.GetInt("BakedBread"));
+
+        PlayerPrefs.Save();
     }
 }
