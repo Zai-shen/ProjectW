@@ -107,8 +107,8 @@ public class GameManager : UnitySingleton<GameManager>
         PlayerPrefs.SetInt("SuckerRadius", 0);
  
 
-        // Starting Powder:
-        PlayerPrefs.SetInt("BakedBread",0);
+        // Starting Bread:
+        PlayerPrefs.SetInt("BakedBread",1000);
 
 
         // Highscore to 0
