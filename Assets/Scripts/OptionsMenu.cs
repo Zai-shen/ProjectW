@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class OptionsMenu : MonoBehaviour
 {
-
-
     // Give options about sound with sliders
     public void SetVolume (float volume){
 
     }
+
+    
+
 }

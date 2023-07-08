@@ -24,6 +24,8 @@ public class GameManager : UnitySingleton<GameManager>
     
     protected override void Awake()
     {
+        Debug.Log("in override Awake");
+        initilizeMetaLevels();
         base.Awake();
         _activeScene = SceneManager.GetActiveScene().buildIndex;
     }
@@ -86,6 +88,7 @@ public class GameManager : UnitySingleton<GameManager>
 
     public void LoadMainMenu()
     {
+        Debug.Log("in LoadMainMenu");
         LoadScene(0);
 
         // test if it is first time user starts game
@@ -94,22 +97,69 @@ public class GameManager : UnitySingleton<GameManager>
         } else {
             initilizeMetaLevels();
         }
+        // remove later, just for testing!!
+        initilizeMetaLevels();
     }
     public void initilizeMetaLevels(){
         //set all metalevels to zero
+        Debug.Log("In initilizeMetaLevels");
 
         PlayerPrefs.SetInt("DMG", 0);
         PlayerPrefs.SetInt("ATKSpeed", 0);
         PlayerPrefs.SetInt("KnockBack", 0);
 
         PlayerPrefs.SetInt("HP", 0);
-        PlayerPrefs.SetInt("XPGainSpeed", 0);
         PlayerPrefs.SetInt("SuckerRadius", 0);
- 
+        PlayerPrefs.SetInt("XPGainSpeed", 0);
+
+
+        // bonus effect per level
+        PlayerPrefs.SetInt("DMG_Level1", 15);
+        PlayerPrefs.SetInt("ATKSpeed_Level1", 15);
+        PlayerPrefs.SetInt("KnockBack_Level1", 15);
+        PlayerPrefs.SetInt("HP_Level1", 15);
+        PlayerPrefs.SetInt("SuckerRadius_Level1", 15);
+        PlayerPrefs.SetInt("XPGainSpeed_Level1", 15); 
+
+        PlayerPrefs.SetInt("DMG_Level2", 10);
+        PlayerPrefs.SetInt("ATKSpeed_Level2", 10);
+        PlayerPrefs.SetInt("KnockBack_Level2", 10);
+        PlayerPrefs.SetInt("HP_Level2", 10);
+        PlayerPrefs.SetInt("SuckerRadius_Level2", 10);
+        PlayerPrefs.SetInt("XPGainSpeed_Level2", 10); 
+
+        PlayerPrefs.SetInt("DMG_Level3", 5);
+        PlayerPrefs.SetInt("ATKSpeed_Level3", 5);
+        PlayerPrefs.SetInt("KnockBack_Level3", 5);
+        PlayerPrefs.SetInt("HP_Level3", 5);
+        PlayerPrefs.SetInt("SuckerRadius_Level3", 5);
+        PlayerPrefs.SetInt("XPGainSpeed_Level3", 5); 
+
+        // Cost per level
+        PlayerPrefs.SetInt("DMG_cost_Level1", 100);
+        PlayerPrefs.SetInt("ATKSpeed_cost_Level1", 100);
+        PlayerPrefs.SetInt("KnockBack_cost_Level1", 100);
+        PlayerPrefs.SetInt("HP_cost_Level1", 100);
+        PlayerPrefs.SetInt("SuckerRadius_cost_Level1", 100);
+        PlayerPrefs.SetInt("XPGainSpeed_cost_Level1", 100); 
+
+        PlayerPrefs.SetInt("DMG_cost_Level2", 150);
+        PlayerPrefs.SetInt("ATKSpeed_cost_Level2", 150);
+        PlayerPrefs.SetInt("KnockBack_cost_Level2", 150);
+        PlayerPrefs.SetInt("HP_cost_Level2", 150);
+        PlayerPrefs.SetInt("SuckerRadius_cost_Level2", 150);
+        PlayerPrefs.SetInt("XPGainSpeed_cost_Level2", 150); 
+
+        PlayerPrefs.SetInt("DMG_cost_Level3", 200);
+        PlayerPrefs.SetInt("ATKSpeed_cost_Level3", 200);
+        PlayerPrefs.SetInt("KnockBack_cost_Level3", 200);
+        PlayerPrefs.SetInt("HP_cost_Level3", 200);
+        PlayerPrefs.SetInt("SuckerRadius_cost_Level3", 200);
+        PlayerPrefs.SetInt("XPGainSpeed_cost_Level3", 200); 
+
 
         // Starting Bread:
-        PlayerPrefs.SetInt("BakedBread",1000);
-
+        PlayerPrefs.SetInt("BakedBread",250);
 
         // Highscore to 0
         PlayerPrefs.SetInt("HighScore", 0);
