@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     public bool UseAggroRange = false;
     public float AggroRange = 10f;
     public Vector3 WalkPoint;
-    private bool _walkPointSet;
+    protected bool _walkPointSet;
     public float WalkPointRange;
     
     #endregion
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     #region Health
 
     public Health Health;
-    private bool dead;
+    protected bool dead;
 
     #endregion
     
@@ -37,17 +37,17 @@ public class Enemy : MonoBehaviour
     #region Navigation
 
     public float SearchCooldown = 0.1f;
-    private float _searchCooldown;
+    protected float _searchCooldown;
     public float MoveSpeed = 2f;
-    private Transform _target;
-    private NavMeshAgent _agent;
-    private NavMeshPath _navMeshPath;
+    protected Transform _target;
+    protected NavMeshAgent _agent;
+    protected NavMeshPath _navMeshPath;
     
     #endregion
 
     public int AttackDamage = 10;
     public float AttackRange = 1f;
-    private bool _attackOnCooldown;
+    protected bool _attackOnCooldown;
     
     #region Animation
 

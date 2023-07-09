@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class WorldGeneration : UnitySingleton<WorldGeneration>
 {
+    public Transform EnvironmentContainer;
+    
     public int WorldSizeX, WorldSizeZ;
     public int Mountains;
     public int Trees;
@@ -56,6 +58,7 @@ public class WorldGeneration : UnitySingleton<WorldGeneration>
                 view.y = 0;
                 rotation.SetLookRotation(view, Vector3.up);
                 go.transform.localRotation = rotation;
+                go.transform.SetParent(EnvironmentContainer);
             }
             else
             {

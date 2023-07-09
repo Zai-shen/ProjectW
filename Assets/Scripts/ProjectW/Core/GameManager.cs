@@ -24,7 +24,6 @@ public class GameManager : UnitySingleton<GameManager>
     
     protected override void Awake()
     {
-        Debug.Log("in override Awake");
         initilizeMetaLevels();
         base.Awake();
         _activeScene = SceneManager.GetActiveScene().buildIndex;
@@ -102,7 +101,6 @@ public class GameManager : UnitySingleton<GameManager>
     }
     public void initilizeMetaLevels(){
         //set all metalevels to zero
-        Debug.Log("In initilizeMetaLevels");
 
         PlayerPrefs.SetInt("DMG", 0);
         PlayerPrefs.SetInt("ATKSpeed", 0);
