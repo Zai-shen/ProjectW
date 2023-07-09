@@ -11,4 +11,9 @@ public static class Globals
     public static LayerMask GroundMask = 1 << 7;
     public static LayerMask EnemyMask = 1 << 8;
     public static LayerMask DamageableLayers = PlayerMask | EnemyMask;
+
+    public static int FlourPlayer = 0;
+    public static int FlourLevel = 0;
+
+    
 }
