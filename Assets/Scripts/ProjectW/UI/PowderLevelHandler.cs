@@ -7,13 +7,18 @@ using UnityEngine.UI;
 
 public class PowderLevelHandler : MonoBehaviour
 {
-    public Button Button1;
-    public Button Button2;
-    public Button Button3;
+    public Button Btn1;
+    private Text bt1TextTitle;
+    private Text bt1TextBonus;
+    public Button Btn2;
+    public Button Btn3;
     public Text PowderLVLText;
 
     private int tmpint;
     public void OnLevelUp(){
+
+        // pause time, open canvas
+
         // trigger when new level is reached
         Globals.FlourNextLevel *= 2;
         Globals.FlourLevel += 1;
@@ -35,5 +40,9 @@ public class PowderLevelHandler : MonoBehaviour
                 selection[j] = Rand;
                 print(selection[j]);
             }
+        
+        Btn1.GetComponent<Text>();
+
+
     }
 }
