@@ -128,6 +128,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6269878395440669898, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
   m_PrefabInstance: {fileID: 988024559}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &65697221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4074664140238575694, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
+  m_PrefabInstance: {fileID: 988024559}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &244213608 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4370665176441653998, guid: d0329f7d2e9d3ff4c8a0abd462dd43da, type: 3}
@@ -583,7 +594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4370665175930721976, guid: d0329f7d2e9d3ff4c8a0abd462dd43da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 332.5
+      value: 357
       objectReference: {fileID: 0}
     - target: {fileID: 4370665175930721976, guid: d0329f7d2e9d3ff4c8a0abd462dd43da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1033,6 +1044,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1821966878}
     m_Modifications:
+    - target: {fileID: 3048313168002387179, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
+      propertyPath: _buttonName
+      value: ATKSpeed
+      objectReference: {fileID: 0}
     - target: {fileID: 6269878395440669898, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1103,7 +1118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6269878395440669898, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6269878395440669898, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1119,7 +1134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7062806981511101437, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
       propertyPath: m_Name
-      value: SuckerRadiusLevelButton (1)
+      value: ATKSpeedLevelButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1540,6 +1555,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6269878395440669898, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
   m_PrefabInstance: {fileID: 538809805}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &794669658 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4074664140238575694, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
+  m_PrefabInstance: {fileID: 538809805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &823230124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,6 +1784,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1821966878}
     m_Modifications:
+    - target: {fileID: 3048313168002387179, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
+      propertyPath: _buttonName
+      value: XPGainSpeed
+      objectReference: {fileID: 0}
     - target: {fileID: 6269878395440669898, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1844,7 +1874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7062806981511101437, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
       propertyPath: m_Name
-      value: SuckerRadiusLevelButton (3)
+      value: XPGainSpeedLevelButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1859,6 +1889,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1821966878}
     m_Modifications:
+    - target: {fileID: 3048313168002387179, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
+      propertyPath: _buttonName
+      value: SuckerRadius
+      objectReference: {fileID: 0}
     - target: {fileID: 6269878395440669898, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1929,7 +1963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6269878395440669898, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6269878395440669898, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2071,7 +2105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6520845832554965708, guid: 4237b287d790794818d5a9070db5bf09, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 332.5
+      value: 357
       objectReference: {fileID: 0}
     - target: {fileID: 6520845832554965708, guid: 4237b287d790794818d5a9070db5bf09, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2308,6 +2342,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0329f7d2e9d3ff4c8a0abd462dd43da, type: 3}
+--- !u!1001 &1210471497
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1462723770873469181, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462723770873469181, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462723770873469181, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462723770873469181, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462723770873469181, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462723770873469181, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462723770873469181, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462723770873469181, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462723770873469181, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462723770873469181, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462723770873469181, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504118020825129534, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1621acd4bede12c47ba6461ff1c0cb2f, type: 3}
 --- !u!1 &1379180219
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,6 +2665,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6269878395440669898, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
   m_PrefabInstance: {fileID: 970258993}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1576027961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4074664140238575694, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
+  m_PrefabInstance: {fileID: 970258993}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1588671035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2954,6 +3060,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6269878395440669898, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
   m_PrefabInstance: {fileID: 1880877478}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1803739083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4074664140238575694, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
+  m_PrefabInstance: {fileID: 1880877478}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1814581919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3025,10 +3142,10 @@ RectTransform:
   - {fileID: 1461438985}
   - {fileID: 1588671036}
   - {fileID: 1783009593}
-  - {fileID: 8922772870779646190}
-  - {fileID: 65697219}
   - {fileID: 794669656}
   - {fileID: 1803739081}
+  - {fileID: 8922772870779646190}
+  - {fileID: 65697219}
   - {fileID: 1576027959}
   m_Father: {fileID: 632883477}
   m_RootOrder: -1
@@ -3092,11 +3209,11 @@ MonoBehaviour:
   LevelText: 'LVL: '
   MaxedLeveled: Maxed Out
   ButtonMetaDMGLevel: {fileID: 1783009595}
-  ButtonMetaATKSpeedLevel: {fileID: 0}
-  ButtonMetaKnockBackLevel: {fileID: 0}
+  ButtonMetaATKSpeedLevel: {fileID: 794669658}
+  ButtonMetaKnockBackLevel: {fileID: 1803739083}
   ButtonMetaHPLevel: {fileID: 3260015379333327989}
-  ButtonMetaSuckerRadiusLevel: {fileID: 0}
-  ButtonMetaXPGainSpeedLevel: {fileID: 0}
+  ButtonMetaSuckerRadiusLevel: {fileID: 65697221}
+  ButtonMetaXPGainSpeedLevel: {fileID: 1576027961}
 --- !u!1001 &1880877478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3105,6 +3222,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1821966878}
     m_Modifications:
+    - target: {fileID: 3048313168002387179, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
+      propertyPath: _buttonName
+      value: KnockBack
+      objectReference: {fileID: 0}
     - target: {fileID: 6269878395440669898, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3191,7 +3312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7062806981511101437, guid: a0c582e55fbfb26639793f435e149cd2, type: 3}
       propertyPath: m_Name
-      value: SuckerRadiusLevelButton (2)
+      value: KnockBackLevelButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
