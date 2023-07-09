@@ -223,4 +223,13 @@ public class Enemy : MonoBehaviour
             Gizmos.DrawLine(transform.position, _target ? _target.position : Vector3.zero );
         }
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("BaguetteAttack"))
+        {
+            int dmg = other.GetComponentInParent<AttackAbility>().Damage;
+            Health.TryTakeDamage(dmg);
+        }
+    }
 }

@@ -104,6 +104,10 @@ public class BakerMovement : MonoBehaviour
     public void SetMoving(bool state)
     {
         Moving = state;
+
+        if (!_agent)
+            return;
+        
         if (state)
         {
             _agent.isStopped = false;
