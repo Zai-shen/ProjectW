@@ -4,45 +4,47 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-
 public class PowderLevelHandler : MonoBehaviour
 {
-    public Button Btn1;
-    private Text bt1TextTitle;
-    private Text bt1TextBonus;
-    public Button Btn2;
-    public Button Btn3;
+
+    public int[] position1 = new int[4];
+    public int[] position2 = new int[4];
+    public int[] position3 = new int[4];
+
+    public GameObject Panel1;
+
     public Text PowderLVLText;
 
     private int tmpint;
-    public void OnLevelUp(){
+    private string tmpstring;
+    public void Awaken(){
 
         // pause time, open canvas
 
         // trigger when new level is reached
+        List<int> selection=  randomNrNoDuplicate(3, 7);
+    }
+    void onPowderLVLUp(){
         Globals.FlourNextLevel *= 2;
         Globals.FlourLevel += 1;
 
+    }
+
+    private List<int> randomNrNoDuplicate(int Lenght, int nOptions){
         int Rand;
-        int Lenght = 3;
-        int noptions = 7;
         List<int> selection = new List<int>();
         selection = new List<int>(new int[Lenght]);
      
             for (int j = 1; j < Lenght; j++)
             {
-                Rand = Random.Range(0,noptions);
+                Rand = Random.Range(0,nOptions);
      
                 while (selection.Contains(Rand))
                 {
-                    Rand = Random.Range(0,noptions);
+                    Rand = Random.Range(0,nOptions);
                 }
                 selection[j] = Rand;
-                print(selection[j]);
             }
-        
-        Btn1.GetComponent<Text>();
-
-
+        return selection;
     }
 }
