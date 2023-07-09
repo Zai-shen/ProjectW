@@ -26,11 +26,11 @@ public class MetaShop : MonoBehaviour
     {
         // add all buttons on this page
         ButtonList.Add(ButtonMetaDMGLevel);
-        //ButtonList.Add(ButtonMetaATKSpeedLevel);
-        //ButtonList.Add(ButtonMetaKnockBackLevel);
+        ButtonList.Add(ButtonMetaATKSpeedLevel);
+        ButtonList.Add(ButtonMetaKnockBackLevel);
         ButtonList.Add(ButtonMetaHPLevel);
-        //ButtonList.Add(ButtonMetaSuckerRadiusLevel);
-        //ButtonList.Add(ButtonMetaXPGainSpeedLevel);
+        ButtonList.Add(ButtonMetaSuckerRadiusLevel);
+        ButtonList.Add(ButtonMetaXPGainSpeedLevel);
 
 
         Debug.Log("Before get com metashop");
