@@ -98,7 +98,7 @@ public class GameManager : UnitySingleton<GameManager>
             initilizeMetaLevels();
         }
         // remove later, just for testing!!
-        initilizeMetaLevels();
+
     }
     public void initilizeMetaLevels(){
         //set all metalevels to zero

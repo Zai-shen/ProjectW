@@ -32,9 +32,6 @@ public class MetaShop : MonoBehaviour
         ButtonList.Add(ButtonMetaSuckerRadiusLevel);
         ButtonList.Add(ButtonMetaXPGainSpeedLevel);
 
-
-        Debug.Log("Before get com metashop");
-
         MetaShop ms = GetComponent<MetaShop>();
         
         foreach (Button bt in ButtonList){
@@ -45,9 +42,9 @@ public class MetaShop : MonoBehaviour
         _currentBread = PlayerPrefs.GetInt("BakedBread");
         BreadScoreText.text = "You Got \n" + _currentBread.ToString() + "\n Pieces of Bread";
 
-
-        tmpint= PlayerPrefs.GetInt("BakedBread")+1000;
+        tmpint= PlayerPrefs.GetInt("BakedBread");
         PlayerPrefs.SetInt("BakedBread",tmpint);
+        PlayerPrefs.Save();
     }    
 
 
@@ -60,13 +57,5 @@ public class MetaShop : MonoBehaviour
             lvMg.checkAffordable();
         }
     }
-
-
-
-
-
-    
-
-
 
 }
