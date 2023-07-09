@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : UnitySingleton<GameManager>
 {
-    // public PauseMenu PauseMenu;
+    public PauseMenu PauseMenu;
     private bool _gamePaused;
     private int _activeScene = 0;
 
@@ -58,12 +58,12 @@ public class GameManager : UnitySingleton<GameManager>
         if (!_gamePaused)
         {
             _gamePaused = true;
-            // PauseMenu?.Pause();
+            PauseMenu?.Pause();
         }
         else
         {
             _gamePaused = false;
-            // PauseMenu?.Continue();
+            PauseMenu?.Continue();
         }
     }
 
