@@ -25,6 +25,7 @@ public class CinnamonRoll : MonoBehaviour
     #region Health
 
     public Health Health;
+    private bool dead;
 
     #endregion
     
@@ -76,7 +77,8 @@ public class CinnamonRoll : MonoBehaviour
     
     private void Update()
     {
-        // FaceTarget();
+        if (dead)
+            return;
 
         _searchCooldown += Time.deltaTime;
         if (_searchCooldown >= SearchCooldown)
@@ -156,6 +158,7 @@ public class CinnamonRoll : MonoBehaviour
     [ContextMenu("Death")]
     void Die()
     {
+        dead = true;
         _agent.isStopped = true;
         foreach (ParticleSystem ps in OnDeathEffects)
         {

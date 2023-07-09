@@ -100,4 +100,17 @@ public class BakerMovement : MonoBehaviour
         
         Gizmos.DrawLine(transform.position, _agent.destination);
     }
+
+    public void SetMoving(bool state)
+    {
+        Moving = state;
+        if (state)
+        {
+            _agent.isStopped = false;
+        }
+        else
+        {
+            _agent.isStopped = true;
+        }
+    }
 }
