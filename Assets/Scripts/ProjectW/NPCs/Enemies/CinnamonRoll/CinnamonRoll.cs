@@ -7,49 +7,11 @@ using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Health))]
-public class CinnamonRoll : MonoBehaviour
+public class CinnamonRoll : Enemy
 {
     public ParticleSystem[] OnDeathEffects;
 
-    #region Patroling
-
-    public bool UsePatroling = false;
-    public bool UseAggroRange = false;
-    public float AggroRange = 10f;
-    public Vector3 WalkPoint;
-    private bool _walkPointSet;
-    public float WalkPointRange;
-    
-    #endregion
-
-    #region Health
-
-    public Health Health;
-    private bool dead;
-
-    #endregion
-    
-    #region States
-
-    public bool PlayerInSight, PlayerInAttackRange;
-
-    #endregion
-
-    #region Navigation
-
-    public float SearchCooldown = 0.1f;
-    private float _searchCooldown;
-    public float MoveSpeed = 2f;
-    private Transform _target;
-    private NavMeshAgent _agent;
-    private NavMeshPath _navMeshPath;
-    
-    #endregion
-
-    public int AttackDamage = 20;
-    public float AttackRange = 1f;
     public float ExplosionRadius = 5f;
-    private bool _attackOnCooldown;
 
     private void Awake()
     {
@@ -65,16 +27,6 @@ public class CinnamonRoll : MonoBehaviour
         _target = PlayerManager.Instance.ABaker.transform;
     }
 
-    private void OnEnable()
-    {
-        Globals.Enemies.Add(this.gameObject);
-    }
-
-    private void OnDisable()
-    {
-        Globals.Enemies.Remove(this.gameObject);
-    }
-    
     private void Update()
     {
         if (dead)
@@ -92,16 +44,6 @@ public class CinnamonRoll : MonoBehaviour
         if (PlayerInAttackRange && !_attackOnCooldown) Attack();
     }
 
-    public float DistanceToTarget()
-    {
-        return Vector3.Distance(_target.position, transform.position);
-    }
-
-    public bool CheckTargetInAttackRange()
-    {
-        return DistanceToTarget() <= AttackRange;
-    }
-    
     private void Attack()
     {
         Die();
@@ -118,41 +60,6 @@ public class CinnamonRoll : MonoBehaviour
         {
             _agent.isStopped = true;
         }
-    }
-
-    private void Patrole()
-    {
-        if (!_walkPointSet) SearchWalkPoint();
-
-        if (_walkPointSet) _agent.SetDestination(WalkPoint);
-
-        if (_agent.remainingDistance <= _agent.stoppingDistance)
-        {
-            _walkPointSet = false;
-        }
-    }
-
-    private void SearchWalkPoint()
-    {
-        float _randomX = Random.Range(-WalkPointRange, WalkPointRange);
-        float _randomZ = Random.Range(-WalkPointRange, WalkPointRange);
-        const float _height = 2f;
-        Vector3 _difference = new(_randomX, _height, _randomZ);
-
-        WalkPoint = transform.position + _difference;
-        
-        if (_agent.CalculatePath(WalkPoint, _navMeshPath))
-        {
-            _walkPointSet = true;
-        }else if (PlayerInAttackRange)
-        {
-            _walkPointSet = true;
-        }
-    }
-
-    private void FaceTarget()
-    {
-        transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
     }
     
     [ContextMenu("Death")]
@@ -210,14 +117,5 @@ public class CinnamonRoll : MonoBehaviour
         
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, ExplosionRadius);
-    }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("BaguetteAttack"))
-        {
-            int dmg = other.GetComponentInParent<AttackAbility>().Damage;
-            Health.TryTakeDamage(dmg);
-        }
     }
 }
