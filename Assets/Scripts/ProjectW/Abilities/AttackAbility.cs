@@ -1,17 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class AttackAbility : Ability
 {
     public GameObject pivot;
-    public float CoolDown = 2f;
-    public float Damage = 10f;
+    public float AttackDuration = 1f;
+    public int Damage = 10;
     public float Length = 5f;
     
     protected override void DoAbility()
     {
-        Debug.Log("Iam aattacking");
-        // Do extend StartCoroutine(Extend(Length));
+        float startLength = transform.localScale.z;
+        
+        Sequence attack = DOTween.Sequence();
+        Tweener scaleUp = pivot.transform.DOScaleZ(Length,AttackDuration/2f).SetEase(Ease.OutExpo);
+        Tweener scaleDown = pivot.transform.DOScaleZ(startLength,AttackDuration/2f).SetEase(Ease.InExpo);
+        attack.Append(scaleUp).Append(scaleDown);
+        attack.Play();
+        
+        CoolDownFade();
     }
 }

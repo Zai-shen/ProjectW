@@ -211,4 +211,13 @@ public class CinnamonRoll : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, ExplosionRadius);
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("BaguetteAttack"))
+        {
+            int dmg = other.GetComponentInParent<AttackAbility>().Damage;
+            Health.TryTakeDamage(dmg);
+        }
+    }
 }
