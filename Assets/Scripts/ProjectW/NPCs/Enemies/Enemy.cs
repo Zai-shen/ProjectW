@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     #region Health
 
     public Health Health;
+    private bool dead;
 
     #endregion
     
@@ -44,6 +45,7 @@ public class Enemy : MonoBehaviour
     
     #endregion
 
+    public int AttackDamage = 10;
     public float AttackRange = 1f;
     private bool _attackOnCooldown;
     
@@ -79,7 +81,10 @@ public class Enemy : MonoBehaviour
     
     private void Update()
     {
-        // FaceTarget();
+        if (dead)
+        {
+            return;
+        }
 
         _searchCooldown += Time.deltaTime;
         if (_searchCooldown >= SearchCooldown)
@@ -114,7 +119,12 @@ public class Enemy : MonoBehaviour
     
     private IEnumerator StopAttackingAfterSeconds(float seconds)
     {
-        yield return new WaitForSeconds(seconds);
+        yield return new WaitForSeconds(seconds/2);
+        if (_target.TryGetComponent<Health>(out Health hp))
+        {
+            hp.TryTakeDamage(AttackDamage);
+        }
+        yield return new WaitForSeconds(seconds/2);
         AAnimator.SetBool("IsPunching",false);
         _attackOnCooldown = false;
         _agent.updateRotation = true;
@@ -170,8 +180,11 @@ public class Enemy : MonoBehaviour
         transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
     }
     
+    [ContextMenu("Death")]
     void Die()
     {
+        dead = true;
+        _agent.isStopped = true;
         AAnimator.SetFloat("MovementSpeed",0);
         AAnimator.SetTrigger("Death");
         StartCoroutine(KillAfterSeconds(2));

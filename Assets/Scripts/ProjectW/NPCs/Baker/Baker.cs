@@ -19,14 +19,15 @@ namespace ProjectW.NPCs.Baker
         {
             _bakerMovement = GetComponent<BakerMovement>();
             _bakerAnimator = GetComponent<BakerAnimator>();
-            _bakerMovement.Moving = true;
+            _bakerMovement.SetMoving(true);
             Health = GetComponent<Health>();
             HealthBar.SetMaxHealth(Health.HealthPoints);
         }
 
+        [ContextMenu("Death")]
         public void Die()
         {
-            _bakerMovement.Moving = false;
+            _bakerMovement.SetMoving(false);
             _bakerAnimator.Die();
             Health.enabled = false;
         }
