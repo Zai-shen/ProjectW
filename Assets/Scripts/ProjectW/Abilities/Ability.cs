@@ -23,6 +23,7 @@ public class Ability : MonoBehaviour
 
     protected virtual void DoAbility()
     {
+        Debug.Log("i am doing a basic ability");
     }
 
 }

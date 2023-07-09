@@ -25,12 +25,12 @@ public class MagicDough : MonoBehaviour
     private void Start()
     {
         m_camera = Camera.main;
-        _abilities.Add(Abilities.ATTACK, (Ability)Attack);
-        _abilities.Add(Abilities.SUCKER, (Ability)Sucker);
-        _abilities.Add(Abilities.SHIELD, (Ability)Shield);
+        _abilities.Add(Abilities.ATTACK, Attack);
+        _abilities.Add(Abilities.SUCKER, Sucker);
+        _abilities.Add(Abilities.SHIELD, Shield);
         // _abilities.Add(Abilities.ATTACKTWO, A);
         
-        Select(1);
+        Select(Abilities.ATTACK);
     }
 
     
@@ -57,7 +57,6 @@ public class MagicDough : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Doing selected thing");
             _abilities[_currentSelectedAbility].StartAbility();
         }
     }
