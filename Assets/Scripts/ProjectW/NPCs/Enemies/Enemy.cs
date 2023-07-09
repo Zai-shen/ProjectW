@@ -110,6 +110,7 @@ public class Enemy : MonoBehaviour
     
     private void Attack()
     {
+        _agent.isStopped = true;
         AAnimator.SetFloat("MovementSpeed", 0f);
         AAnimator.SetBool("IsPunching",true);
         _attackOnCooldown = true;
@@ -128,6 +129,7 @@ public class Enemy : MonoBehaviour
         AAnimator.SetBool("IsPunching",false);
         _attackOnCooldown = false;
         _agent.updateRotation = true;
+        _agent.isStopped = false;
     }
 
     private void ChasePlayer()
