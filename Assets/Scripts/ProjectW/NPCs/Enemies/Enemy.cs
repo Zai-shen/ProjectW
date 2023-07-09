@@ -172,6 +172,7 @@ public class Enemy : MonoBehaviour
     
     void Die()
     {
+        _agent.isStopped = true;
         AAnimator.SetFloat("MovementSpeed",0);
         AAnimator.SetTrigger("Death");
         StartCoroutine(KillAfterSeconds(2));

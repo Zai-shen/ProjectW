@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Health))]
 public class CinnamonRoll : MonoBehaviour
 {
+    public ParticleSystem[] OnDeathEffects;
 
     #region Patroling
 
@@ -44,7 +45,9 @@ public class CinnamonRoll : MonoBehaviour
     
     #endregion
 
+    public int AttackDamage = 20;
     public float AttackRange = 1f;
+    public float ExplosionRadius = 5f;
     private bool _attackOnCooldown;
 
     private void Awake()
@@ -150,10 +153,25 @@ public class CinnamonRoll : MonoBehaviour
         transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
     }
     
+    [ContextMenu("Death")]
     void Die()
     {
-        //Explode 
-        StartCoroutine(KillAfterSeconds(2));
+        _agent.isStopped = true;
+        foreach (ParticleSystem ps in OnDeathEffects)
+        {
+            ps.Play();
+        }
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
+        foreach (Collider hitCollider in hitColliders)
+        {
+            if (hitCollider.TryGetComponent<Health>(out Health hp))
+            {
+                hp.TryTakeDamage(AttackDamage);
+            }
+        }
+
+        StartCoroutine(KillAfterSeconds(1));
     }
 
     private IEnumerator KillAfterSeconds(float seconds)
@@ -186,5 +204,8 @@ public class CinnamonRoll : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawLine(transform.position, _target ? _target.position : Vector3.zero );
         }
+        
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, ExplosionRadius);
     }
 }
